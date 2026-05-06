@@ -2,6 +2,7 @@
 
 :root {
   --background: #F9F9F7;
+  --background-muted: #dfdfd5;
   --foreground: #111111;
   --violet: #6366F1;
   --emerald: #10B981;
@@ -12,6 +13,7 @@
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-muted: var(--background-muted);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-dm-sans);
   --font-mono: var(--font-dm-mono);

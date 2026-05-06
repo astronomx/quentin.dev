@@ -26,13 +26,14 @@ export default function StatCard({title, content, contentInfo, role, period, ico
         icon === "Plus" && <PlusIcon className="h-4 w-4 text-(--slate-blue)" />
 
     return(
-        <div className={`flex flex-col bg-white p-3 border border-gray-200 rounded-xl min-h-24 w-full gap-3
-            ${isTitleItemsOnly ? "justify-start" : "justify-center"}`}>
+        <div className={`flex flex-col bg-white p-3 border-2 border-background-muted/50 rounded-xl min-h-24 w-full gap-3
+            ${isTitleItemsOnly ? "justify-start" : "justify-center"} ease-in-out transition-colors duration-300
+            hover:border-background-muted`}>
 
             {isCompactCard ? (
                 <div className={`flex flex-col h-full ${isTitleItemsOnly ? "justify-start gap-1" : "justify-center gap-3"}`}>
                     { hasTitle && 
-                        <p className="text-xs opacity-50 font-mono uppercase self-start">{title}</p>
+                        <p className="text-sm opacity-40 font-mono uppercase self-start">{title}</p>
                     }
 
                     { hasContent &&                     
@@ -53,7 +54,7 @@ export default function StatCard({title, content, contentInfo, role, period, ico
                         <div className="flex flex-row justify-between">
                             <p className="text-sm opacity-40 font-mono uppercase">{title}</p>
 
-                            <div className="flex flex-row bg-background rounded-full px-2 py-0.5 text-sm opacity-50 gap-1">
+                            <div className="flex flex-row bg-background rounded-full px-2 py-0.5 text-sm opacity-50 gap-1 drop-shadow-sm">
                                 <p>{period?.startDate}</p>
                                 -
                                 <p>{period?.endDate}</p>
@@ -64,7 +65,7 @@ export default function StatCard({title, content, contentInfo, role, period, ico
                             <p className="text-xl font-bold">{contentInfo}</p>
 
                             <div className="flex flex-col gap-1">
-                                <span className="flex flex-row gap-1">
+                                <span className="flex flex-row items-center gap-1">
                                     <p className="text-sm opacity-75">{role}</p>
                                     <StopIcon className="h-4 w-4 text-(--slate-blue)" />
                                 </span>
@@ -75,12 +76,12 @@ export default function StatCard({title, content, contentInfo, role, period, ico
                 </div>
             )}
             
-            <div className="flex flex-row flex-wrap gap-1">
+            <div className="flex flex-row flex-wrap gap-3">
                 {items?.map((item) => (
                     <span
                         key={item}
                         className="rounded-md py-0.5 px-1 font-mono
-                            bg-background text-sm w-fit"
+                            bg-background text-sm w-fit drop-shadow-sm"
                     >
                         {item}
                     </span>
