@@ -1,10 +1,12 @@
+import { XMarkIcon, PlusIcon, StopIcon } from "@heroicons/react/24/solid";
+
 type StatCardType = {
     title?: string | "none",
     content?: string,
     contentInfo?: string | "none",
     role?: string | "none",
     period?: PeriodType,
-    icon: "Plus" | "X" | "Circle" | "none",
+    icon: "Plus" | "X" | "Square" | "none",
     items?: string[]
 }
 
@@ -18,7 +20,10 @@ export default function StatCard({title, content, contentInfo, role, period, ico
     const hasTitle = title;
     const hasContent = content || contentInfo;
     const isTitleItemsOnly = Boolean(hasTitle) && !hasContent && Boolean(items?.length);
-
+    
+    const isIcon =
+        icon === "X" && <XMarkIcon className="h-4 w-4 text-(--slate-blue)" /> ||
+        icon === "Plus" && <PlusIcon className="h-4 w-4 text-(--slate-blue)" />
 
     return(
         <div className={`flex flex-col bg-white p-3 border border-gray-200 rounded-xl min-h-24 w-full gap-3
@@ -32,8 +37,13 @@ export default function StatCard({title, content, contentInfo, role, period, ico
 
                     { hasContent &&                     
                         <div className="flex flex-col">
-                            <p className="text-xl">{content}</p>
-                            <p className="text-xs opacity-50">{contentInfo}</p>
+                            <p className="text-2xl">
+                                <span className="flex flex-row">
+                                    {content}
+                                    <span className="self-end">{isIcon}</span>
+                                </span>
+                            </p>
+                            <p className="text-sm opacity-50">{contentInfo}</p>
                         </div>
                     }
                 </div>
@@ -41,9 +51,9 @@ export default function StatCard({title, content, contentInfo, role, period, ico
                 <div className="flex justify-between">                    
                     <div className="flex flex-col w-full">
                         <div className="flex flex-row justify-between">
-                            <p className="text-xs opacity-40 font-mono uppercase">{title}</p>
+                            <p className="text-sm opacity-40 font-mono uppercase">{title}</p>
 
-                            <div className="flex flex-row bg-background rounded-full px-2 py-0.5 text-xs opacity-50 gap-1">
+                            <div className="flex flex-row bg-background rounded-full px-2 py-0.5 text-sm opacity-50 gap-1">
                                 <p>{period?.startDate}</p>
                                 -
                                 <p>{period?.endDate}</p>
@@ -51,12 +61,14 @@ export default function StatCard({title, content, contentInfo, role, period, ico
                         </div>
 
                         <div className="flex flex-col gap-1">
-                            <p className="text-lg font-bold">{contentInfo}</p>
+                            <p className="text-xl font-bold">{contentInfo}</p>
 
-                            <div className="flex flex-row gap-3">
-                                <p className="text-xs">{role}</p>
-                                {icon}
-                                <p className="text-xs">{content}</p>
+                            <div className="flex flex-col gap-1">
+                                <span className="flex flex-row gap-1">
+                                    <p className="text-sm opacity-75">{role}</p>
+                                    <StopIcon className="h-4 w-4 text-(--slate-blue)" />
+                                </span>
+                                <p className="text-sm opacity-75">{content}</p>
                             </div>
                         </div>
                     </div>
@@ -68,7 +80,7 @@ export default function StatCard({title, content, contentInfo, role, period, ico
                     <span
                         key={item}
                         className="rounded-md py-0.5 px-1 font-mono
-                            bg-background text-xs w-fit"
+                            bg-background text-sm w-fit"
                     >
                         {item}
                     </span>
