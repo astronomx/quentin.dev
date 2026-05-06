@@ -14,24 +14,32 @@ type PeriodType = {
 }
 
 export default function StatCard({title, content, contentInfo, role, period, icon, items}: StatCardType) {
-    const isCompactCard = icon === "Plus" || icon === "X" || icon === "none"
+    const isCompactCard = icon === "Plus" || icon === "X" || icon === "none";
+    const hasTitle = title;
+    const hasContent = content || contentInfo;
+    const isTitleItemsOnly = Boolean(hasTitle) && !hasContent && Boolean(items?.length);
+
 
     return(
-        <div className={`flex flex-col bg-white p-3 border border-gray-200 rounded-xl h-24 w-full
-            justify-center`}>
+        <div className={`flex flex-col bg-white p-3 border border-gray-200 rounded-xl min-h-24 w-full gap-3
+            ${isTitleItemsOnly ? "justify-start" : "justify-center"}`}>
 
             {isCompactCard ? (
-                <div className="">
-                    <p className="text-xs opacity-40 font-mono uppercase">{title}</p>
+                <div className={`flex flex-col h-full ${isTitleItemsOnly ? "justify-start gap-1" : "justify-center gap-3"}`}>
+                    { hasTitle && 
+                        <p className="text-xs opacity-50 font-mono uppercase self-start">{title}</p>
+                    }
 
-                    <div className="flex flex-col">
-                        <p className="text-xl">{content}</p>
-                        <p className="text-sm">{contentInfo}</p>
-                    </div>
+                    { hasContent &&                     
+                        <div className="flex flex-col">
+                            <p className="text-xl">{content}</p>
+                            <p className="text-xs opacity-50">{contentInfo}</p>
+                        </div>
+                    }
                 </div>
             ) : (
                 <div className="flex justify-between">                    
-                    <div className="flex flex-col">
+                    <div className="flex flex-col w-full">
                         <div className="flex flex-row justify-between">
                             <p className="text-xs opacity-40 font-mono uppercase">{title}</p>
 
@@ -55,7 +63,7 @@ export default function StatCard({title, content, contentInfo, role, period, ico
                 </div>
             )}
             
-            <div className="flex flex-row gap-1">
+            <div className="flex flex-row flex-wrap gap-1">
                 {items?.map((item) => (
                     <span
                         key={item}
