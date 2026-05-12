@@ -6,10 +6,10 @@ export default function Home() {
     <div className="flex flex-col flex-1 w-full">
       <Herosection />
 
-      <div className="relative z-10 flex flex-col">
-        <h2 className="self-center text-5xl mb-5 font-sans italic">Projects</h2>
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col px-4 pb-16 pt-8 lg:max-w-screen-2xl lg:px-8">
+        <h2 className="mb-8 self-center text-4xl md:text-5xl font-sans italic lg:mb-10">Projects</h2>
 
-        <div className="flex flex-col md:flex-row gap-5">
+        <div className="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-10">
 
           <ProjectCard title="Stichting Hartekind"
             previewText="
