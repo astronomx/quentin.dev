@@ -13,7 +13,7 @@ export default function Herosection() {
                 </p>
 
                 <div className="flex flex-row gap-3">
-                    <a className="flex flex-row group gap-1 items-center rounded-md px-2 md:px-3 py-1 md:py-2  bg-foreground text-background underline-none
+                    <a className="flex flex-row group gap-1 items-center rounded-md px-2 md:px-3 py-1 md:py-2 bg-foreground text-background underline-none
                         border-2 border-foreground ease-in-out transition-colors duration-300 hover:bg-background hover:text-foreground
                         text-xs md:text-lg cursor-pointer"
                         href="/"
