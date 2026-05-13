@@ -17,19 +17,34 @@ export default async function ProjectIdPage({ params }: PageProps) {
   if (!project) notFound();
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-12">
-      <h1 className="text-3xl font-bold lg:text-4xl">{project.title}</h1>
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-12">
+      <h1 className="text-3xl font-bold lg:text-4xl">{ project.title }</h1>
 
       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-background-muted">
         <Image
-          src={project.image}
-          alt={project.title}
+          src={ project.image }
+          alt={ project.title }
           fill
-          sizes="(max-width: 768px) 100vw, 768px"
+          sizes="(max-width: 1024px) 100vw, 1024px"
           className="object-cover"
           priority
         />
+
       </div>
+
+      <section className="flex flex-col gap-3">
+        <h3 className="font-semibold text-2xl text-(--violet) italic">My work</h3>
+        <p className="whitespace-pre-line text-sm leading-relaxed opacity-90 lg:text-base">
+          {project.myWork}
+        </p>
+      </section>
+
+      <section className="flex flex-col gap-3">
+        <h3 className="font-semibold text-2xl text-(--violet) italic">What did I learn?</h3>
+        <p className="whitespace-pre-line text-sm leading-relaxed opacity-90 lg:text-base">
+          {project.learned}
+        </p>
+      </section>
     </div>
   );
 }
