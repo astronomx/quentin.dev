@@ -38,8 +38,9 @@ export const projects: Project[] = [
     image: "/images/planInternationaal.png",
     previewText: `Redesigned the website for a global children's rights organization for a fresher look, clearer information architecture
       and an improved user experience to better reflect their mission.`,
-    myWork: ``,
-    learned: ``
+    myWork: `For Plan Internationaal I first just worked on tickets for the project. Mostly simple stuff but directly visible on the pages like layout mistakes or bugs. After a while I got asked to join a colleague with redesigning, a bunch of stuff had to be done. A week after I got briefed about the redesign my colleague had to stay home for a while so I got put on the project alone. This was the first time meeting with a client alone (+ Client Services Director) so it was weird but good. I wrote everything down, asked questions and gave recommendations.
+      \nThings like colors, fonts, layouts etc. mainly had to be changed around. Again simple stuff but directly visible which made it super fun to work on and see the immediate changes. The donation form needed new colors and the donation options 'One-time' to 'Monthly' had to change to the corresponding amounts. The quote and carousel needed some touch ups, mainly colorwise but the quote needed a new font too and options.`,
+    learned: `The thing I will always take from this project is that I was trusted to handle it on my own. It was some easy stuff but juggling this alongside my other projects was new. I had to remind myself I had other tasks to handle and could not work on the main projects going on. I learned to trust in the capabilities I had not only programming wise but also how I handeld things professionally. Asking the right questions and being an active note taker instead of a quiet voice taught me that my input had value beyond just the code I wrote `
   },
 ];
 
