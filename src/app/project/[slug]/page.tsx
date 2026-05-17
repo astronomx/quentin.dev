@@ -21,6 +21,7 @@ export default async function ProjectIdPage({ params }: PageProps) {
       <h1 className="text-3xl font-bold lg:text-4xl">{ project.title }</h1>
 
       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-background-muted">
+        // TODO: Make GIF instead of picture
         <Image
           src={ project.image }
           alt={ project.title }

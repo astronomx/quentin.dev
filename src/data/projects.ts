@@ -26,8 +26,11 @@ export const projects: Project[] = [
     image: "/images/stichtingHartekind.png",
     previewText: `Built a new website for a foundation supporting children with congenital heart defects focused on accessibility,
       storytelling, and making it easy for visitors to donate and get involved.`,
-    myWork: ``,
-    learned: ``
+    myWork: `I got to help building this project from the ground up which was a great experience to learn from. From planning the stories to actually programming them, I really got to do it all. Something new to me in this project was browser testing with Lighthouse and Browserstack. I was going back and forth with Lighthouse and it's SEO score checking if everything loaded in correctly and if all semantics were correct. With browserstack I made sure the website worked between all widely used browsers available.
+      \nIn this project I've worked on the teasers and thier different styling for normal and research related work. Navigation in the main menu and the footer were both fun to build, the styling for different situations showed me the strengths of grid. Among other blocks I worked on I really liked this project, it gave me clear view of what a well structered and production ready project looks like from the inside.`,
+    learned: `School can only teach you so much about building a project, setting it up, the notes and what goes into it. Working on it with people with more experience and a broader skillset than you get to learn in another way. I followed the lead of my supervisor and our other colleague, in meetings I would not only write down notes for the project but also what my colleagues asked and what they focused on.
+      \nGiving the stories a weight and being a part of that process taught me how to estimate the time a task should take and what to prioritise and when. Not only did I learn how to prioritise my own tasks and work, but also what the client wanted to be prioritised. Attending all meetings listening and watching made me more comfortable asking questions and not just sit at the background just taking notes. Asking these questions gave me a better perspective at the tasks at hand but also any future tasks.
+    `
   },
   {
     slug: "plan-internationaal",
