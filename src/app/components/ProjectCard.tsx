@@ -12,7 +12,7 @@ export default function ProjectCard({ title, previewText, image, slug }: Project
             </div>
 
             <div className="relative h-[200px] w-full shrink-0 overflow-hidden rounded-lg sm:h-[220px] lg:h-[280px]">
-                // TODO: INTERACTIVITY on hover show GIF of page scrolling
+                {/* TODO: INTERACTIVITY on hover show GIF of page scrolling */}
                 <Image
                     src={image}
                     alt={title}

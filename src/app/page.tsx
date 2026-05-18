@@ -2,6 +2,7 @@ import { projects } from "@/data/projects";
 
 import Herosection from "./components/Herosection";
 import ProjectCard from "./components/ProjectCard";
+import AboutSection from "./components/AboutSection";
 
 export default function Home() {
   return (
@@ -16,6 +17,12 @@ export default function Home() {
             <ProjectCard key={project.slug} {...project} />
           ))}
         </div>
+      </div>
+
+      <div className="w-full px-4 pb-16 pt-8 lg:px-8">
+        <h2 className="mb-8 flex justify-center text-4xl md:text-5xl font-sans italic lg:mb-10">About me</h2>
+
+        <AboutSection />
       </div>
     </div>
   );
