@@ -13,14 +13,14 @@ export default function Herosection() {
                 </p>
 
                 <div className="flex flex-row gap-3">
-                    <a className="flex flex-row group gap-1 items-center rounded-md px-2 md:px-3 py-1 md:py-2 bg-foreground text-background underline-none
+                    {/* <a className="flex flex-row group gap-1 items-center rounded-md px-2 md:px-3 py-1 md:py-2 bg-foreground text-background underline-none
                         border-2 border-foreground ease-in-out transition-colors duration-300 hover:bg-background hover:text-foreground
                         text-xs md:text-lg cursor-pointer"
                         href="/"
                     >
                         View my work
                         <ArrowTopRightOnSquareIcon className="h-4 w-4 text-background transition-colors duration-300 group-hover:text-foreground" />
-                    </a>
+                    </a> */}
         
                     <a
                         href="/cv/quentin-resume.pdf"
@@ -50,7 +50,7 @@ export default function Herosection() {
                     Twig and SCSS (with a little Typescript for logic) to create custom themes and block the NGO's could use all in their in own style.
                     " 
                     contentInfo="US media" role="Intern / Junior dev"
-                    icon="Square" period={{ startDate: "Jun 2025", endDate: "Sep 2025" }} />
+                    icon="Square" period={{ startDate: "Feb 2025", endDate: "Jun 2025" }} />
 
                 <StatCard title="Programming languages / Tools" icon="none"
                     items={["NextJs", "Typescript", "Tailwind", "VueJs", "Java", "SQL", "Figma", "Git", "Linux"]} />
