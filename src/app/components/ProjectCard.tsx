@@ -1,15 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import type { Project } from "@/data/projects";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
-type ProjectCardType = {
-    title: string,
-    previewText: string,
-    image: string
-}
-
-export default function ProjectCard({title, previewText, image}: ProjectCardType) {
+export default function ProjectCard({ title, previewText, image, slug }: Project) {
     return (
         <div className="flex w-full flex-col rounded-lg">
             <div className="z-20 w-fit rounded-tr-lg bg-background px-2 py-0.5 lg:px-3 lg:py-1">
@@ -17,6 +12,7 @@ export default function ProjectCard({title, previewText, image}: ProjectCardType
             </div>
 
             <div className="relative h-[200px] w-full shrink-0 overflow-hidden rounded-lg sm:h-[220px] lg:h-[280px]">
+                // TODO: INTERACTIVITY on hover show GIF of page scrolling
                 <Image
                     src={image}
                     alt={title}
@@ -31,7 +27,7 @@ export default function ProjectCard({title, previewText, image}: ProjectCardType
 
                 <div className="flex shrink-0 flex-row items-center gap-1 transition-all group">
                     <Link
-                        href="/"
+                        href={`/project/${slug}`}
                         className="text-xs underline underline-offset-4 rounded-lg drop-shadow-sm transition-all duration-200
                             cursor-pointer lg:text-sm"
                     >

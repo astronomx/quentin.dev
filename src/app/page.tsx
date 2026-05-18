@@ -1,3 +1,5 @@
+import { projects } from "@/data/projects";
+
 import Herosection from "./components/Herosection";
 import ProjectCard from "./components/ProjectCard";
 
@@ -10,31 +12,9 @@ export default function Home() {
         <h2 className="mb-8 self-center text-4xl md:text-5xl font-sans italic lg:mb-10">Projects</h2>
 
         <div className="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-10">
-
-          <ProjectCard title="Stichting Hartekind"
-            previewText="
-              Built a new website for a foundation supporting children with congenital heart defects focused on accessibility, 
-              storytelling, and making it easy for visitors to donate and get involved.
-            "
-            image="/images/stichtingHartekind.png"
-          />
-
-          <ProjectCard title="Aidsfonds"
-            previewText="
-              Built a new website supporting their mission toward a world without AIDS clear information, accessible donation flow, 
-              and personal stories that move people to act.
-            "
-            image="/images/aidsfonds.png"
-          />
-
-          <ProjectCard title="Plan Internationaal"
-            previewText="
-              Redesigned the website for a global children's rights organization for a fresher look, clearer information architecture
-              and an improved user experience to better reflect their mission.
-            "
-            image="/images/planInternationaal.png"
-          />
-
+          {projects.map((project) => (
+            <ProjectCard key={project.slug} {...project} />
+          ))}
         </div>
       </div>
     </div>
