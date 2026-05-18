@@ -1,4 +1,4 @@
-import StatCard from "./StatCard";
+import StatCard from "@/app/components/StatCard";
 
 import { ArrowDownTrayIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 

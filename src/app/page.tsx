@@ -1,8 +1,8 @@
 import { projects } from "@/data/projects";
 
-import Herosection from "./components/Herosection";
-import ProjectCard from "./components/ProjectCard";
-import AboutSection from "./components/AboutSection";
+import Herosection from "@/app/components/sections/HeroSection";
+import ProjectCard from "@/app/components/ProjectCard";
+import AboutSection from "@/app/components/sections/AboutSection";
 
 export default function Home() {
   return (
