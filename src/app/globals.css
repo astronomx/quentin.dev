@@ -27,3 +27,45 @@ body {
 .about-section .about-word {
   transform-origin: 50% 100%;
 }
+
+.about-bg-drop {
+  transform-origin: top center;
+  transform: scaleY(0);
+}
+
+.about-bg-glow {
+  opacity: 0;
+}
+
+@keyframes about-bg-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(3%, -4%) scale(1.06);
+  }
+}
+
+.about-bg-float {
+  animation: about-bg-drift 14s ease-in-out infinite;
+}
+
+.about-bg-float-delayed {
+  animation: about-bg-drift 18s ease-in-out infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-bg-drop {
+    transform: scaleY(1);
+  }
+
+  .about-bg-glow {
+    opacity: 1;
+  }
+
+  .about-bg-float,
+  .about-bg-float-delayed {
+    animation: none;
+  }
+}

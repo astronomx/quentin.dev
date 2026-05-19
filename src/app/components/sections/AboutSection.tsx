@@ -36,6 +36,33 @@ function AboutWords({ parts }: { parts: AboutParagraph["parts"] }) {
     );
 }
 
+function AboutBackground({ animated = true }: { animated?: boolean }) {
+    return (
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+            <div className="absolute inset-0 bg-background" />
+
+            <div
+                className={`about-bg-drop absolute inset-x-0 top-0 h-full bg-linear-to-b from-(--violet)/20 via-(--slate-blue)/12 to-background ${
+                    animated ? "" : "scale-y-100"
+                }`}
+            />
+
+            <div
+                className={`about-bg-glow about-bg-float absolute -top-[12%] -left-[8%] h-[55%] w-[55%] rounded-full bg-(--violet)/25 blur-3xl ${
+                    animated ? "" : "opacity-100"
+                }`}
+            />
+            <div
+                className={`about-bg-glow about-bg-float-delayed absolute -right-[10%] bottom-[8%] h-[45%] w-[45%] rounded-full bg-(--slate-blue)/20 blur-3xl ${
+                    animated ? "" : "opacity-100"
+                }`}
+            />
+
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,color-mix(in_srgb,var(--violet)_8%,transparent),transparent)]" />
+        </div>
+    );
+}
+
 export default function AboutSection() {
     const trackRef = useRef<HTMLDivElement>(null);
     const sectionRef = useRef<HTMLElement>(null);
@@ -53,6 +80,8 @@ export default function AboutSection() {
         if (!track || !section) return;
 
         const paragraphs = gsap.utils.toArray<HTMLElement>(".about-paragraph", section);
+        const bgDrop = section.querySelector<HTMLElement>(".about-bg-drop");
+        const bgGlows = section.querySelectorAll<HTMLElement>(".about-bg-glow");
 
         const ctx = gsap.context(() => {
             paragraphs.forEach((block) => {
@@ -67,12 +96,30 @@ export default function AboutSection() {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: track,
-                    start: "top top+=1.25rem",
+                    start: "top top",
                     end: "bottom bottom",
                     scrub: 1,
                     invalidateOnRefresh: true,
                 },
             });
+
+            if (bgDrop) {
+                tl.fromTo(
+                    bgDrop,
+                    { scaleY: 0, opacity: 0.85 },
+                    { scaleY: 1, opacity: 1, duration: 0.45, ease: "power3.inOut" },
+                    0,
+                );
+            }
+
+            if (bgGlows.length) {
+                tl.fromTo(
+                    bgGlows,
+                    { opacity: 0, y: -48 },
+                    { opacity: 1, y: 0, duration: 0.55, stagger: 0.08, ease: "power2.out" },
+                    0.05,
+                );
+            }
 
             paragraphs.forEach((block, index) => {
                 const words = block.querySelectorAll<HTMLElement>(".about-word");
@@ -96,7 +143,7 @@ export default function AboutSection() {
                         duration: 0.9,
                         ease: "power3.out",
                     },
-                    isFirst ? 0 : "-=0.4",
+                    isFirst ? 0.35 : "-=0.4",
                 );
 
                 if (!isLast) {
@@ -130,8 +177,9 @@ export default function AboutSection() {
 
     if (reduceMotion) {
         return (
-            <section className="relative z-20 flex min-h-[calc(100dvh-2.5rem)] w-full flex-col items-center justify-center bg-background px-4 py-16 lg:px-8">
-                <div className="flex max-w-3xl flex-col gap-8">
+            <section className="about-section relative z-20 flex h-dvh min-h-dvh w-full flex-col items-center justify-center overflow-hidden px-4 py-16 lg:px-8">
+                <AboutBackground animated={false} />
+                <div className="relative z-10 flex max-w-3xl flex-col gap-8">
                     {aboutParagraphs.map((paragraph) => (
                         <p
                             key={paragraph.id}
@@ -149,23 +197,25 @@ export default function AboutSection() {
         <div ref={trackRef} className="relative z-20" style={{ height: scrollTrackHeight }}>
             <section
                 ref={sectionRef}
-                className="about-section sticky top-5 flex min-h-[calc(100dvh-2.5rem)] w-full flex-col items-center justify-center bg-background px-4 py-8 lg:px-8"
+                className="about-section sticky top-0 flex h-dvh min-h-dvh w-full flex-col items-center justify-center overflow-hidden px-4 py-8 lg:px-8"
             >
-              <div className="relative flex h-[min(72dvh,52rem)] w-full max-w-6xl flex-1 items-center justify-center perspective-distant">
-                  {aboutParagraphs.map((paragraph, index) => (
-                      <div
-                          key={paragraph.id}
-                          className={`about-paragraph absolute inset-0 flex items-center justify-center px-2 md:px-6 ${
-                              paragraph.muted ? "opacity-80" : ""
-                          }`}
-                          style={{ zIndex: index + 1 }}
-                      >
-                          <p className="max-w-5xl text-center text-[clamp(1.5rem,4.5vw,3.75rem)] leading-[1.15] font-medium tracking-tight text-balance">
-                              <AboutWords parts={paragraph.parts} />
-                          </p>
-                      </div>
-                  ))}
-              </div>
+                <AboutBackground />
+
+                <div className="relative z-10 flex h-[min(72dvh,52rem)] w-full max-w-6xl flex-1 items-center justify-center perspective-distant">
+                    {aboutParagraphs.map((paragraph, index) => (
+                        <div
+                            key={paragraph.id}
+                            className={`about-paragraph absolute inset-0 flex items-center justify-center px-2 md:px-6 ${
+                                paragraph.muted ? "opacity-80" : ""
+                            }`}
+                            style={{ zIndex: index + 1 }}
+                        >
+                            <p className="max-w-5xl text-center text-[clamp(1.5rem,4.5vw,3.75rem)] leading-[1.15] font-medium tracking-tight text-balance">
+                                <AboutWords parts={paragraph.parts} />
+                            </p>
+                        </div>
+                    ))}
+                </div>
             </section>
         </div>
     );
