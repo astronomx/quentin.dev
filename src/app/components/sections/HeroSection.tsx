@@ -1,10 +1,51 @@
-import StatCard from "@/app/components/StatCard";
+"use client";
 
-import { ArrowDownTrayIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import type { ReactNode } from "react";
+
+import StatCard from "@/app/components/StatCard";
+import { motion } from "motion/react";
+
+import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+
+const statCardDropIn = {
+    hidden: { opacity: 0, y: 100 },
+    visible: { opacity: 1, y: 0 },
+};
+
+const dropInTransition = (delay: number) => ({
+    duration: 2,
+    delay,
+    ease: [0.22, 1, 0.36, 1] as const,
+});
+
+const viewport = { once: true, amount: 0.2 as const };
+
+function AnimatedStatCard({
+    delay,
+    className,
+    children,
+}: {
+    delay: number;
+    className?: string;
+    children: ReactNode;
+}) {
+    return (
+        <motion.div
+            className={className}
+            variants={statCardDropIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+            transition={dropInTransition(delay)}
+        >
+            {children}
+        </motion.div>
+    );
+}
 
 export default function Herosection() {
     return(
-        <div className="flex flex-col lg:items-center md:flex-row w-full gap-5">
+        <div className="flex min-h-[calc(100dvh-2.5rem)] w-full flex-col justify-center gap-5 md:flex-row lg:items-center">
             <div className="flex flex-col gap-5 w-full lg:w-1/2 xl:p-48">
                 <h2 className="text-5xl sm:text-6xl">I build fast, clean <span className="text-(--violet) font-mono">digital things.</span></h2>
                 <p className="opacity-80 text-md/4">
@@ -32,28 +73,42 @@ export default function Herosection() {
                         Download CV
                         <ArrowDownTrayIcon className="h-4 w-4 text-foreground transition-colors duration-300 group-hover:text-background" />
                     </a>
-               
-               
                 </div>
             </div>
 
             <div className="flex flex-col gap-3 w-full md:w-7/12 lg:p-5">
                 <div className="flex flex-col md:flex-row w-full gap-3">
-                    <StatCard content="3" contentInfo="Projects shipped" icon="none" />
-                    <StatCard content="1" contentInfo="Interships done" icon="X" />
+                    <AnimatedStatCard delay={0} className="w-full">
+                        <StatCard content="3" contentInfo="Projects shipped" icon="none" />
+                    </AnimatedStatCard>
+                    <AnimatedStatCard delay={0.1} className="w-full">
+                        <StatCard content="1" contentInfo="Interships done" icon="X" />
+                    </AnimatedStatCard>
                 </div>
 
-                <StatCard title="Internship" content="
+                <AnimatedStatCard delay={0.2}>
+                    <StatCard
+                        title="Internship"
+                        content="
                     At US Media I worked on various projects including Aidsfonds, Stichting Hartekind, 
                     and Plan Internationaal. Here, I learned how a project is set up from absolutely nothing, a lot about how important workflows are, 
                     how to handle meetings and how to meet deadlines. The main thing I worked with was Wordpress BUT with a twist. We used ACF Custom fields, 
                     Twig and SCSS (with a little Typescript for logic) to create custom themes and block the NGO's could use all in their in own style.
-                    " 
-                    contentInfo="US media" role="Intern / Junior dev"
-                    icon="Square" period={{ startDate: "Feb 2025", endDate: "Jun 2025" }} />
+                    "
+                        contentInfo="US media"
+                        role="Intern / Junior dev"
+                        icon="Square"
+                        period={{ startDate: "Feb 2025", endDate: "Jun 2025" }}
+                    />
+                </AnimatedStatCard>
 
-                <StatCard title="Programming languages / Tools" icon="none"
-                    items={["NextJs", "Typescript", "Tailwind", "VueJs", "Java", "SQL", "Figma", "Git", "Linux"]} />
+                <AnimatedStatCard delay={0.3}>
+                    <StatCard
+                        title="Programming languages / Tools"
+                        icon="none"
+                        items={["NextJs", "Typescript", "Tailwind", "VueJs", "Java", "SQL", "Figma", "Git", "Linux"]}
+                    />
+                </AnimatedStatCard>
             </div>
         </div>
     )
