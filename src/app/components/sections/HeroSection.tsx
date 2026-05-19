@@ -13,7 +13,7 @@ const statCardDropIn = {
 };
 
 const dropInTransition = (delay: number) => ({
-    duration: 2,
+    duration: 1,
     delay,
     ease: [0.22, 1, 0.36, 1] as const,
 });
@@ -45,9 +45,9 @@ function AnimatedStatCard({
 
 export default function Herosection() {
     return(
-        <div className="flex min-h-[calc(100dvh-2.5rem)] w-full flex-col justify-center gap-5 md:flex-row lg:items-center">
-            <div className="flex flex-col gap-5 w-full lg:w-1/2 xl:p-48">
-                <h2 className="text-5xl sm:text-6xl">I build fast, clean <span className="text-(--violet) font-mono">digital things.</span></h2>
+        <div className="grid min-h-[calc(100dvh-2.5rem)] w-full grid-cols-1 items-center gap-8 md:grid-cols-12 md:gap-10 lg:gap-14">
+            <div className="flex flex-col gap-5 md:col-span-5 lg:col-span-5 lg:pr-4">
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl max-w-xl">I build fast, clean <span className="text-(--violet) font-mono">digital things.</span></h2>
                 <p className="opacity-80 text-md/4">
                     SE student with a passion for good software. From internship projects to personal builds,
                     I care about the details that make products feel right.
@@ -76,7 +76,7 @@ export default function Herosection() {
                 </div>
             </div>
 
-            <div className="flex flex-col gap-3 w-full md:w-7/12 lg:p-5">
+            <div className="flex flex-col gap-3 md:col-span-7 lg:col-span-7">
                 <div className="flex flex-col md:flex-row w-full gap-3">
                     <AnimatedStatCard delay={0} className="w-full">
                         <StatCard content="3" contentInfo="Projects shipped" icon="none" />
