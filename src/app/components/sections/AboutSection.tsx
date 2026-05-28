@@ -179,6 +179,9 @@ export default function AboutSection() {
         return (
             <section className="about-section relative z-20 flex h-dvh min-h-dvh w-full flex-col items-center justify-center overflow-hidden px-4 py-16 lg:px-8">
                 <AboutBackground animated={false} />
+                <p className="absolute top-6 left-4 z-20 font-mono text-sm md:text-base tracking-[0.16em] uppercase opacity-70 lg:left-8">
+                    About me
+                </p>
                 <div className="relative z-10 flex max-w-3xl flex-col gap-8">
                     {aboutParagraphs.map((paragraph) => (
                         <p
@@ -200,6 +203,9 @@ export default function AboutSection() {
                 className="about-section sticky top-0 flex h-dvh min-h-dvh w-full flex-col items-center justify-center overflow-hidden px-4 py-8 lg:px-8"
             >
                 <AboutBackground />
+                <p className="absolute top-6 left-4 z-20 font-mono text-sm md:text-base tracking-[0.16em] uppercase opacity-70 lg:left-8">
+                    About me
+                </p>
 
                 <div className="relative z-10 flex h-[min(72dvh,52rem)] w-full max-w-6xl flex-1 items-center justify-center perspective-distant">
                     {aboutParagraphs.map((paragraph, index) => (

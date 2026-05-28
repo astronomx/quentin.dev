@@ -32,10 +32,17 @@ export default function ProjectsSection() {
         </div>
     );
 
+    const sectionLabel = (
+        <p className="absolute top-6 left-4 z-20 font-mono text-sm md:text-base tracking-[0.16em] uppercase opacity-70 lg:left-8">
+            Projects
+        </p>
+    );
+
     if (shouldReduceMotion) {
         return (
             <section className="relative z-10 flex w-full flex-col overflow-hidden bg-background pb-16 pt-8">
                 {backgroundLayer}
+                {sectionLabel}
                 <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 sm:gap-6 lg:max-w-screen-2xl lg:grid-cols-3 lg:gap-10 lg:px-8">
                     {projects.map((project, index) => (
                         <ScrollProjectCard
@@ -57,6 +64,7 @@ export default function ProjectsSection() {
         <div ref={containerRef} className="relative z-10" style={{ height: scrollTrackHeight }}>
             <section className="sticky top-5 z-10 flex min-h-[calc(100dvh-2.5rem)] w-full flex-col justify-center overflow-hidden bg-background">
                 {backgroundLayer}
+                {sectionLabel}
                 <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 sm:gap-6 lg:max-w-screen-2xl lg:grid-cols-3 lg:gap-10 lg:px-8">
                     {projects.map((project, index) => (
                         <ScrollProjectCard

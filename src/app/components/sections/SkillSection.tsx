@@ -171,6 +171,9 @@ export default function SkillSection() {
     if (reduceMotion) {
         return (
             <section className="relative z-20 flex h-dvh min-h-dvh w-full flex-col items-center justify-center bg-background px-4">
+                <p className="absolute top-6 left-4 z-20 font-mono text-sm md:text-base tracking-[0.16em] uppercase opacity-70 lg:left-8">
+                    Skills
+                </p>
                 <div className="flex justify-center">{grid}</div>
             </section>
         );
@@ -182,6 +185,9 @@ export default function SkillSection() {
                 ref={sectionRef}
                 className="sticky top-0 flex h-dvh min-h-dvh w-full flex-col items-center justify-center bg-background px-4"
             >
+                <p className="absolute top-6 left-4 z-20 font-mono text-sm md:text-base tracking-[0.16em] uppercase opacity-70 lg:left-8">
+                    Skills
+                </p>
                 <div className="flex flex-1 items-center justify-center">{grid}</div>
             </section>
         </div>
