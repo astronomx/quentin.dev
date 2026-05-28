@@ -28,6 +28,11 @@ body {
   transform-origin: 50% 100%;
 }
 
+.skill-from-left,
+.skill-from-right {
+  transform-origin: center center;
+}
+
 .about-bg-drop {
   transform-origin: top center;
   transform: scaleY(0);
@@ -55,6 +60,70 @@ body {
   animation: about-bg-drift 18s ease-in-out infinite reverse;
 }
 
+@keyframes projects-square-drift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(18px, -22px, 0) rotate(10deg);
+  }
+  100% {
+    transform: translate3d(-14px, 16px, 0) rotate(-8deg);
+  }
+}
+
+.projects-bg-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--violet) 22%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--violet) 22%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.projects-bg-square {
+  position: absolute;
+  border-radius: 0.6rem;
+  border: 1px solid color-mix(in oklab, var(--violet) 34%, transparent);
+  background: color-mix(in oklab, var(--violet) 28%, transparent);
+  box-shadow: 0 8px 24px color-mix(in oklab, var(--violet) 20%, transparent);
+  animation: projects-square-drift 12s ease-in-out infinite;
+}
+
+.projects-bg-square-a {
+  width: 9rem;
+  height: 9rem;
+  top: 10%;
+  left: 6%;
+}
+
+.projects-bg-square-b {
+  width: 6.5rem;
+  height: 6.5rem;
+  top: 58%;
+  left: 18%;
+  animation-duration: 15s;
+  animation-direction: reverse;
+}
+
+.projects-bg-square-c {
+  width: 10rem;
+  height: 10rem;
+  top: 16%;
+  right: 10%;
+  animation-duration: 13.5s;
+}
+
+.projects-bg-square-d {
+  width: 7rem;
+  height: 7rem;
+  bottom: 8%;
+  right: 22%;
+  animation-duration: 16s;
+  animation-direction: reverse;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .about-bg-drop {
     transform: scaleY(1);
@@ -66,6 +135,10 @@ body {
 
   .about-bg-float,
   .about-bg-float-delayed {
+    animation: none;
+  }
+
+  .projects-bg-square {
     animation: none;
   }
 }

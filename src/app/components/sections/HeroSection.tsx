@@ -45,7 +45,7 @@ function AnimatedStatCard({
 
 export default function Herosection() {
     return(
-        <div className="grid min-h-[calc(100dvh-2.5rem)] w-full grid-cols-1 items-center gap-8 md:grid-cols-12 md:gap-10 lg:gap-14">
+        <div className="grid min-h-[calc(100dvh-2.5rem)] w-full grid-cols-1 p-14 items-center gap-8 md:grid-cols-12 md:gap-10 lg:gap-14">
             <div className="flex flex-col gap-5 md:col-span-5 lg:col-span-5 lg:pr-4">
                 <h2 className="text-4xl sm:text-5xl lg:text-6xl max-w-xl">I build fast, clean <span className="text-(--violet) font-mono">digital things.</span></h2>
                 <p className="opacity-80 text-md/4">

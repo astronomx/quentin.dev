@@ -12,11 +12,7 @@ export default function Home() {
 
       <AboutSection />
 
-      <div className="w-full px-4 pb-16 pt-8 lg:px-8">
-        <h2 className="mb-8 flex justify-center text-4xl md:text-5xl font-sans italic lg:mb-10">Proffesional at</h2>
-
-        <SkillSection />
-      </div>
+      <SkillSection />
     </div>
   );
 }
