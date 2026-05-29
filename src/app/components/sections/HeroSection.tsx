@@ -1,12 +1,53 @@
-import StatCard from "@/app/components/StatCard";
+"use client";
 
-import { ArrowDownTrayIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import type { ReactNode } from "react";
+
+import StatCard from "@/app/components/StatCard";
+import { motion } from "motion/react";
+
+import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+
+const statCardDropIn = {
+    hidden: { opacity: 0, y: 100 },
+    visible: { opacity: 1, y: 0 },
+};
+
+const dropInTransition = (delay: number) => ({
+    duration: 1,
+    delay,
+    ease: [0.22, 1, 0.36, 1] as const,
+});
+
+const viewport = { once: true, amount: 0.2 as const };
+
+function AnimatedStatCard({
+    delay,
+    className,
+    children,
+}: {
+    delay: number;
+    className?: string;
+    children: ReactNode;
+}) {
+    return (
+        <motion.div
+            className={className}
+            variants={statCardDropIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+            transition={dropInTransition(delay)}
+        >
+            {children}
+        </motion.div>
+    );
+}
 
 export default function Herosection() {
     return(
-        <div className="flex flex-col lg:items-center md:flex-row w-full gap-5">
-            <div className="flex flex-col gap-5 w-full lg:w-1/2 xl:p-48">
-                <h2 className="text-5xl sm:text-6xl">I build fast, clean <span className="text-(--violet) font-mono">digital things.</span></h2>
+        <div className="grid min-h-[calc(100dvh-2.5rem)] w-full grid-cols-1 p-14 items-center gap-8 md:grid-cols-12 md:gap-10 lg:gap-14">
+            <div className="flex flex-col gap-5 md:col-span-5 lg:col-span-5 lg:pr-4">
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl max-w-xl">I build fast, clean <span className="text-(--violet) font-mono">digital things.</span></h2>
                 <p className="opacity-80 text-md/4">
                     SE student with a passion for good software. From internship projects to personal builds,
                     I care about the details that make products feel right.
@@ -32,28 +73,51 @@ export default function Herosection() {
                         Download CV
                         <ArrowDownTrayIcon className="h-4 w-4 text-foreground transition-colors duration-300 group-hover:text-background" />
                     </a>
-               
-               
                 </div>
             </div>
 
-            <div className="flex flex-col gap-3 w-full md:w-7/12 lg:p-5">
+            <div className="flex flex-col gap-3 md:col-span-7 lg:col-span-7">
                 <div className="flex flex-col md:flex-row w-full gap-3">
-                    <StatCard content="3" contentInfo="Projects shipped" icon="none" />
-                    <StatCard content="1" contentInfo="Interships done" icon="X" />
+                    <AnimatedStatCard delay={0} className="w-full">
+                        <StatCard content="3" contentInfo="Projects shipped" icon="none" />
+                    </AnimatedStatCard>
+                    <AnimatedStatCard delay={0.1} className="w-full">
+                        <StatCard content="1" contentInfo="Interships done" icon="X" />
+                    </AnimatedStatCard>
                 </div>
 
-                <StatCard title="Internship" content="
+                <AnimatedStatCard delay={0.3}>
+                    <StatCard
+                        title="School"
+                        content="
+                    At Bit Academy I started learning how to write clean and usable code. My time here first started with basic HTML and CSS, my love for CSS
+                    started here and I made the choice to start the track for frontend development. At Bit you have your own choice in learning what you want,
+                    even if you wanted to start working with frameworks that weren't included in the curricular. I picked up Next.Js as my main weapon of choice
+                    and did a lot of school projects with, this gave me a good insight of the framework. I expanded my frontend toolbox with Tailwind, it's so simple
+                    and loveable that I let it replcace plain CSS although I still prefer plain CSS from time to time.
+                    "
+                        contentInfo="Bit Academy"
+                        role="Student"
+                        icon="Square"
+                        period={{ startDate: "Sep 2022", endDate: "Jun 2025" }}
+                    />
+                </AnimatedStatCard>
+                
+                <AnimatedStatCard delay={0.2}>
+                    <StatCard
+                        title="Internship"
+                        content="
                     At US Media I worked on various projects including Aidsfonds, Stichting Hartekind, 
                     and Plan Internationaal. Here, I learned how a project is set up from absolutely nothing, a lot about how important workflows are, 
                     how to handle meetings and how to meet deadlines. The main thing I worked with was Wordpress BUT with a twist. We used ACF Custom fields, 
                     Twig and SCSS (with a little Typescript for logic) to create custom themes and block the NGO's could use all in their in own style.
-                    " 
-                    contentInfo="US media" role="Intern / Junior dev"
-                    icon="Square" period={{ startDate: "Feb 2025", endDate: "Jun 2025" }} />
-
-                <StatCard title="Programming languages / Tools" icon="none"
-                    items={["NextJs", "Typescript", "Tailwind", "VueJs", "Java", "SQL", "Figma", "Git", "Linux"]} />
+                    "
+                        contentInfo="US media"
+                        role="Intern / Junior dev"
+                        icon="Square"
+                        period={{ startDate: "Feb 2025", endDate: "Jun 2025" }}
+                    />
+                </AnimatedStatCard>
             </div>
         </div>
     )
