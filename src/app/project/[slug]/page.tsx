@@ -19,7 +19,7 @@ export default async function ProjectIdPage({ params }: PageProps) {
 
   return (
     <div>
-      <div className="fixed">
+      <div className="fixed p-5">
         <BackButton />
       </div>
 
