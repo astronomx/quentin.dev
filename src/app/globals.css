@@ -124,6 +124,111 @@ body {
   animation-direction: reverse;
 }
 
+@keyframes skills-shape-drift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-16px, 20px, 0) rotate(-12deg);
+  }
+  100% {
+    transform: translate3d(12px, -18px, 0) rotate(8deg);
+  }
+}
+
+.skills-bg-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--slate-blue) 24%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--slate-blue) 24%, transparent) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+.skills-bg-shape {
+  position: absolute;
+  border: 1px solid color-mix(in oklab, var(--slate-blue) 36%, transparent);
+  background: color-mix(in oklab, var(--slate-blue) 22%, transparent);
+  box-shadow: 0 8px 28px color-mix(in oklab, var(--slate-blue) 18%, transparent);
+  animation: skills-shape-drift 13s ease-in-out infinite;
+}
+
+.skills-bg-square {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 0.5rem;
+  top: 12%;
+  left: 8%;
+}
+
+.skills-bg-circle {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  top: 55%;
+  left: 14%;
+  animation-duration: 16s;
+  animation-direction: reverse;
+}
+
+@keyframes skills-diamond-drift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(45deg);
+  }
+  50% {
+    transform: translate3d(-16px, 20px, 0) rotate(33deg);
+  }
+  100% {
+    transform: translate3d(12px, -18px, 0) rotate(53deg);
+  }
+}
+
+.skills-bg-diamond {
+  width: 6rem;
+  height: 6rem;
+  top: 18%;
+  right: 12%;
+  border-radius: 0.35rem;
+  animation: skills-diamond-drift 14s ease-in-out infinite;
+}
+
+.skills-bg-triangle {
+  width: 5.5rem;
+  height: 5.5rem;
+  bottom: 14%;
+  right: 20%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  border: none;
+  background: color-mix(in oklab, var(--slate-blue) 26%, transparent);
+  box-shadow: none;
+  animation-duration: 17s;
+  animation-direction: reverse;
+}
+
+.skills-bg-ring {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  bottom: 10%;
+  left: 28%;
+  background: transparent;
+  border-width: 2px;
+  animation-duration: 15s;
+}
+
+.skills-bg-hex {
+  width: 5rem;
+  height: 5.75rem;
+  top: 42%;
+  right: 6%;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: none;
+  background: color-mix(in oklab, var(--slate-blue) 20%, transparent);
+  box-shadow: none;
+  animation-duration: 18s;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .about-bg-drop {
     transform: scaleY(1);
@@ -139,6 +244,17 @@ body {
   }
 
   .projects-bg-square {
+    animation: none;
+  }
+
+  .skills-bg-shape,
+  .skills-bg-triangle,
+  .skills-bg-hex {
+    animation: none;
+  }
+
+  .skills-bg-diamond {
+    transform: rotate(45deg);
     animation: none;
   }
 }

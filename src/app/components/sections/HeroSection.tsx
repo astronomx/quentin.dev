@@ -86,6 +86,23 @@ export default function Herosection() {
                     </AnimatedStatCard>
                 </div>
 
+                <AnimatedStatCard delay={0.3}>
+                    <StatCard
+                        title="School"
+                        content="
+                    At Bit Academy I started learning how to write clean and usable code. My time here first started with basic HTML and CSS, my love for CSS
+                    started here and I made the choice to start the track for frontend development. At Bit you have your own choice in learning what you want,
+                    even if you wanted to start working with frameworks that weren't included in the curricular. I picked up Next.Js as my main weapon of choice
+                    and did a lot of school projects with, this gave me a good insight of the framework. I expanded my frontend toolbox with Tailwind, it's so simple
+                    and loveable that I let it replcace plain CSS although I still prefer plain CSS from time to time.
+                    "
+                        contentInfo="Bit Academy"
+                        role="Student"
+                        icon="Square"
+                        period={{ startDate: "Sep 2022", endDate: "Jun 2025" }}
+                    />
+                </AnimatedStatCard>
+                
                 <AnimatedStatCard delay={0.2}>
                     <StatCard
                         title="Internship"
@@ -99,14 +116,6 @@ export default function Herosection() {
                         role="Intern / Junior dev"
                         icon="Square"
                         period={{ startDate: "Feb 2025", endDate: "Jun 2025" }}
-                    />
-                </AnimatedStatCard>
-
-                <AnimatedStatCard delay={0.3}>
-                    <StatCard
-                        title="Programming languages / Tools"
-                        icon="none"
-                        items={["NextJs", "Typescript", "Tailwind", "VueJs", "Java", "SQL", "Figma", "Git", "Linux"]}
                     />
                 </AnimatedStatCard>
             </div>
