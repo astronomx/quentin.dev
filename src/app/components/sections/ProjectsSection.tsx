@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 
-import { projects } from "@/data/projects";
+import { featuredProjects } from "@/data/projects";
 
 import ScrollProjectCard from "@/app/components/ScrollProjectCard";
 import { useReducedMotion, useScroll } from "motion/react";
@@ -44,11 +44,11 @@ export default function ProjectsSection() {
                 {backgroundLayer}
                 {sectionLabel}
                 <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 sm:gap-6 lg:max-w-screen-2xl lg:grid-cols-3 lg:gap-10 lg:px-8">
-                    {projects.map((project, index) => (
+                    {featuredProjects.map((project, index) => (
                         <ScrollProjectCard
                             key={project.slug}
                             index={index}
-                            total={projects.length}
+                            total={featuredProjects.length}
                             scrollYProgress={scrollYProgress}
                             {...project}
                         />
@@ -58,7 +58,7 @@ export default function ProjectsSection() {
         );
     }
 
-    const scrollTrackHeight = `calc(100dvh + ${projects.length * SCROLL_BEATS_PER_CARD}dvh)`;
+    const scrollTrackHeight = `calc(100dvh + ${featuredProjects.length * SCROLL_BEATS_PER_CARD}dvh)`;
 
     return (
         <div ref={containerRef} className="relative z-10" style={{ height: scrollTrackHeight }}>
@@ -66,11 +66,11 @@ export default function ProjectsSection() {
                 {backgroundLayer}
                 {sectionLabel}
                 <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 sm:gap-6 lg:max-w-screen-2xl lg:grid-cols-3 lg:gap-10 lg:px-8">
-                    {projects.map((project, index) => (
+                    {featuredProjects.map((project, index) => (
                         <ScrollProjectCard
                             key={project.slug}
                             index={index}
-                            total={projects.length}
+                            total={featuredProjects.length}
                             scrollYProgress={scrollYProgress}
                             {...project}
                         />

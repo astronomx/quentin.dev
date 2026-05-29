@@ -42,7 +42,25 @@ export const projects: Project[] = [
       \nThings like colors, fonts, layouts etc. mainly had to be changed around. Again simple stuff but directly visible which made it super fun to work on and see the immediate changes. The donation form needed new colors and the donation options 'One-time' to 'Monthly' had to change to the corresponding amounts. The quote and carousel needed some touch ups, mainly colorwise but the quote needed a new font too and options.`,
     learned: `The thing I will always take from this project is that I was trusted to handle it on my own. It was some easy stuff but juggling this alongside my other projects was new. I had to remind myself I had other tasks to handle and could not work on the main projects going on. I learned to trust in the capabilities I had not only programming wise but also how I handeld things professionally. Asking the right questions and being an active note taker instead of a quiet voice taught me that my input had value beyond just the code I wrote `
   },
+  {
+    slug: "defensie",
+    title: "Defensie Vibration Detector",
+    image: "/images/defensie2.png",
+    previewText: `In collabartion with Defensie for a school project we made a vibration detector that upon activation starts recording what happend, and can do AI analys that gives a summary of the audio.`,
+    myWork: `I got assigned to the frontend of this project and made a full tactical dashboard. The dashboard is a MVP but a functional and great one. It features a map, event timeline and a tabe for node information and the analyses data.
+      \nThe map component displays the location of the nodes that are put into the system. We didn't incoporate a gps in the physical node, since operaters often carry of compass or somethings else for their location I chose to add a menu where can manually add the coordinates of the node.
+      \nUnderneath the map there is a event timeline. In this the events are displayed live from newest to oldest. When a event has happend the AI will do a analyses. With this analsys the top result will become the output and is used to display what event has happend and which node this happend at.
+      \nThe nodes are interactive. When the 'Node' tab is selected in the node detail panel next to the map, the selected nodes information will be displayed. You can see all recent events of this node, listen to the audio and the status. Click on a audio event will start a AI analyses and will direct you straight to the analys tab.
+      \nThis tab has all the info about the events. The audio which again you can play directly in the browser, the outcome of what AI thinks it is with a confidence percentage and a top 5 of sounds it could be with the confidence percentages.
+      \nBefore I started coding the dashboard I first created figma designs for mulptiple pages.`,
+    learned: `This project I mainly focused on iterating the right way. This meant talking a lot with my team and the product owner. I started from scractch by researching tactical dashboards and design. From this I took inspiration and started creating the wireframes for a multitude of pages.
+      \nAfter the designs were done I showed them to my team for feedback, and after the sprint was done I showed them to the product owner which was happy with not only the design but all aspects of it. The colors, layout, fonts etc. were correct and some aspects they already used in their own products. I kept repeating this process of showing all the stuff I made, this really helped me grow by understanding deeper part of the processes you go through in a project.
+      \nBeing a creative technologist this semester really got me out of my 'shell', I became more pro-active sharing my toughts and idea's. I was constantly on the look out for things to improve or new things we could maybe use to make the most out of our project. I wasn't just focussing on the programming and improving code but focusing on the product as a whole which gave me a great perspective shift.`
+  },
 ];
+
+/** Projects shown in the homepage projects section (3-column grid). */
+export const featuredProjects = projects.slice(0, 3);
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
